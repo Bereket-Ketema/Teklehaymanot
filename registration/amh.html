@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የነዋሪ መመዝገቢያ ቅፅ</title>
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>የ ኩርፋ ጨሌ ደ/ፀሐይ አቡነ ተክለሃይማኖት ቤ/ክ <br> የምዕመናን መመዝገብያ ቅፅ</h2>
+    <form action="/register" method="post" id="registerForm">
+      
+      <!-- 1. የግለሰቡ መረጃ -->
+      <fieldset>
+        <legend>1. የግለሰቡ መረጃ</legend>
+        <label>ስም: <input type="text" name="ስም" required></label>
+        <label>የአባት ስም: <input type="text" name="የአባት_ስም"></label>
+        <label>የአያት ስም: <input type="text" name="የአያት_ስም"></label>
+        <label>የእናት ሙሉ ስም: <input type="text" name="የእናት_ስም"></label>
+        <label>የክርስትና ስም: <input type="text" name="የክርስትና_ስም"></label>
+        <label>የባለቤት ስም (ካለ): <input type="text" name="የባለቤት_ስም"></label>
+        <label>ልጆች ብዛት: <input type="number" name="ልጆች_ብዛት" required></label>
+        <label>ፆታ:
+          <select name="ፆታ" required> 
+            <option value="">--ይምረጡ--</option>
+            <option>ወንድ</option>
+            <option>ሴት</option>
+          </select>
+        </label>
+        <label>የትውልድ ቀን (ቀን/ወር/አመት):<input type="text" name="የትውልድ_ቀን" placeholder="14/06/1990" pattern="\d{2}/\d{2}/\d{4}" required></label>
+        <label>እድሜ: <input type="number" name="እድሜ" required></label>
+      </fieldset>
+
+       <fieldset>
+        <legend>2. ንሰሃ አባት</legend>
+        <label>ንስሃ አባት አሎት:
+          <select id="niseha" name="ንሰሃ_አሎት" required onchange="checkNiseha()">
+            <option value="">--ይምረጡ--</option>
+            <option value="አለኝ">አለኝ</option>
+            <option value="የለኝም">የለኝም</option>
+          </select>
+        </label>
+        <div id="ንሰሃ_አባት">
+      <label>
+        የእርሶን ንሰሃ አባት ይምረጡ:
+        <select name="ንሰሃ_አባት" >
+          <option value="">--ይምረጡ--</option>
+          <option>ቀሲስ ጥላሁን</option>
+          <option>መሪጌታ ኤፍሬም</option>
+          <option>ቀሲስ ፍሰሃ</option>
+          <option>መልአከ ጸሐይ</option>
+        </select>
+      </label>
+    </div>  
+      </fieldset>
+
+      <!-- 3. የመገኛ አድራሻ -->
+      <fieldset>
+        <legend>3. የመገኛ አድራሻ</legend>
+        <label>የቤት ቁጥር: <input type="text" name="የቤት_ቁጥር" required></label>
+        <label>በአዚ አድራሻ የኖረው ዘመን (ዓመት): <input type="number" name="የኖረው_ዘመን" min="0"></label>
+        <label>ቀጠና:
+          <select id="qexena" name="ቀጠና" required >
+            <option value="">--ይምረጡ--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="jiru belina">jiru belina</option>
+          </select>
+        </label>
+        <label>ስልክ ቁጥር: <input type="tel" name="ስልክ_ቁጥር" required></label>
+        <label>ኢሜይል አድራሻ: <input type="email" name="ኢሜይል" placeholder="ግዴታ አይደለም"></label>
+      </fieldset>
+
+
+      <!-- 4. ትምህርት እና ሥራ -->
+      <fieldset>
+        <legend>4. ትምህርት እና ሥራ</legend>
+        <label>የትምህርት ደረጃ: <input type="text" name="የትምህርት_ደረጃ" placeholder="ግዴታ አይደለም"></label>
+        <label>ሙያ/ሥራ: <input type="text" name="ሙያ"></label>
+      </fieldset>
+
+      <!-- 5. እርግጠኝነት -->
+      <fieldset>
+        <legend>5. እርግጠኝነት ማረጋገጫ</legend>
+        <label><input type="checkbox" name="እርግጠኝነት" id="declaration" required> የሰጠኩት መረጃ ትክክልና እውነተኛ መሆኑን እረጋግጣለሁ።</label>
+        <label>ቀን (የማስገባት):<input type="text" name="የማስገባት_ቀን" placeholder="02/11/2017" pattern="\d{2}/\d{2}/\d{4}" required></label>
+        <label>ፊርማ (ስም ያስገቡ): <input type="text" name="ፊርማ" required></label>
+      </fieldset>
+        
+      <button type="submit">ማስገባት</button>
+    </form>
+  </div>
+
+  <script src="mulat.js"></script>
+    <p style="text-align: center; margin-top: 30px; font-size: 14px; color: #555;">&copy; @Bereket. All rights reserved.</p>
+</body>
+</html>

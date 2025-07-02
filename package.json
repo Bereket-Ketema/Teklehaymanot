@@ -1,7 +1,7 @@
 {
   "name": "my-express-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "This web is designed to serve the church with history ,registration, and with support of youtube and also accounts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,9 +13,19 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "multer": "^2.0.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.14.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bereket-Ketema/Teklehaymanot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bereket-Ketema/Teklehaymanot/issues"
+  },
+  "homepage": "https://github.com/Bereket-Ketema/Teklehaymanot#readme"
 }

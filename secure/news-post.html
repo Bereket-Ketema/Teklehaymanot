@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post News</title>
+  <link rel="stylesheet" href="css/news.css" />
+</head>
+<body>
+  <h2>📰 Post News</h2>
+  <div id="alertBox" class="alert" style="display: none;"></div>
+
+  <form id="newsForm">
+    <input type="text" name="title" placeholder="Title" required />
+    <textarea name="content" placeholder="Write your news..." required></textarea>
+    <input type="file" name="image" accept="image/*" required />
+    <button type="submit">Post</button>
+  </form>
+
+  <script src="js/newsPost.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>ዜና ማጥፊያ</title>
+  <link rel="stylesheet" href="css/news-delete.css" />
+</head>
+<body>
+  <h2>የታዘዙ ዜናዎችን ማጥፊያ</h2>
+
+  <ul id="newsList"></ul>
+
+  <script>
+    async function loadNews() {
+      const response = await fetch('/news');
+      const news = await response.json();
+      const list = document.getElementById('newsList');
+      list.innerHTML = '';
+
+      news.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>${item.title}</span>
+          <button onclick="deleteNews(${item.id}, this)">🗑 Delete</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    async function deleteNews(id, btn) {
+      if (!confirm('ይህን ዜና በመሰረዝ ይፈልጋሉ?')) return;
+
+      const res = await fetch('/api/news/' + id, { method: 'DELETE' });
+      if (res.ok) {
+        btn.closest('li').remove();
+        alert('✅ በትክክል ተሰርዟል።');
+      } else {
+        alert('❌ ማጥፋት አልተቻለም።');
+      }
+    }
+
+    window.onload = loadNews;
+  </script>
+</body>
+</html>

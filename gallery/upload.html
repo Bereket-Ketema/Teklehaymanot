@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <title>ፎቶ ማስገባት</title>
+  <link rel="stylesheet" href="css/upload.css">
+</head>
+<body>
+  <h1>ፎቶ ማስገባት</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label>ምድብ ይምረጡ:</label>
+    <select name="category" required>
+      <option value="">--ይምረጡ--</option>
+      <option value="የጥምቀት">የጥምቀት</option>
+      <option value="የመስቀል">የመስቀል</option>
+      <option value="የምርቃት">የምርቃት</option>
+      <option value="የትውስታ">የትውስታ</option>
+      <option value="የሰንበት ትምህርት">የሰንበት ትምህርት</option>
+      <option value="የካህናት">የካህናት</option>
+      <option value="የንግስ">የንግስ</option>
+    </select>
+    <br><br>
+    <input type="file" name="photo" accept="image/*" required />
+    <br><br>
+    <button type="submit">ማስገባ</button>
+  </form><br><br>
+  <a href="/gallery-logout" ><button class="logout-btn">🚪 ውጣ</button></a>
+
+  <script src="js/upload.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <title>ፎቶዎችን መመልከቻ</title>
+  <link rel="stylesheet" href="css/view.css">
+</head>
+<body>
+  <h1>ፎቶዎችን መመልከቻ</h1>
+  <a href="adming.html"><button>admin</button></a>
+  <label>ምድብ ይምረጡ:</label>
+  <select id="categorySelect">
+    <option disabled selected>ምድብ ይምረጡ</option>
+    <option value="የጥምቀት">የጥምቀት</option>
+    <option value="የመስቀል">የመስቀል</option>
+    <option value="የምርቃት">የምርቃት</option>
+    <option value="የትውስታ">የትውስታ</option>
+    <option value="የሰንበት ትምህርት">የሰንበት ትምህርት</option>
+    <option value="የካህናት">የካህናት</option>
+    <option value="የንግስ">የንግስ</option>
+  </select>
+
+  <div id="gallery"></div>
+
+  <div id="popup" onclick="this.style.display='none'">
+    <img src="" alt="Large View">
+  </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const popup = document.getElementById('popup');
+    const popupImg = popup.querySelector('img');
+
+    document.getElementById('categorySelect').onchange = function () {
+      const category = this.value;
+      fetch(`/photos/${category}`)
+        .then(res => res.json())
+        .then(images => {
+          gallery.innerHTML = '';
+          images.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.onclick = () => {
+              popupImg.src = src;
+              popup.style.display = 'flex';
+            };
+            gallery.appendChild(img);
+          });
+        });
+    };
+  </script>
+
+</body>
+</html>

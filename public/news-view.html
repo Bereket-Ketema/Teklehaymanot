@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>ዜናዎች</title>
+  <link rel="stylesheet" href="css/post.css" />
+</head>
+<body>
+  <h2>የቤተክርስቲያን ዜናዎች</h2>
+
+  <div id="newsContainer"></div>
+
+  <script>
+    async function fetchNews() {
+      const response = await fetch('/news');
+      const news = await response.json();
+      const container = document.getElementById('newsContainer');
+      container.innerHTML = '';
+
+      news.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'news-card';
+        card.innerHTML = `
+          <img src="data:image/jpeg;base64,${item.image}" alt="News Image">
+          <div class="content">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <small>📅 ${new Date(item.date).toLocaleDateString('am-ET')}</small>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    fetchNews();
+  </script>
+</body>
+</html>

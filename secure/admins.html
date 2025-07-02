@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የአስተዳደር መቆጣጠሪያ</title>
+  <link rel="stylesheet" href="css/admins.css">
+  
+  <!-- Prevent browser caching -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>የተመዘገቡ ምዕመናን</h1>
+      <a href="/logout" class="logout-btn">🚪 ውጣ</a>
+    </div>
+
+    <table id="peopleTable">
+      <thead>
+        <tr>
+          <th>ስም</th>
+          <th>የአባት ስም</th>
+          <th>የአያት ስም</th>
+          <th>የእናት ስም</th>
+          <th>የክርስትና ስም</th>
+          <th>የባለቤት ስም</th>
+          <th>ልጆች</th>
+          <th>እድሜ</th>
+          <th>ፆታ</th>
+          <th>ንሰሃ አሎት</th>
+          <th>ንሰሃ አባት</th>
+          <th>ቤት ቁጥር</th>
+          <th>ቀጠና</th>
+          <th>ትምህርት</th>
+          <th>ሙያ</th>
+          <th>ስልክ</th>
+          <th>አስወግድ</th>
+        </tr>
+      </thead>
+      <tbody id="peopleBody"></tbody>
+    </table>
+  </div>
+
+  <br><br><br><br>
+
+  <script src="js/fetch.js"></script>
+</body>
+</html>

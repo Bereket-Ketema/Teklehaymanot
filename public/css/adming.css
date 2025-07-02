@@ -1,0 +1,78 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  }
+
+
+body {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("admi.jpg")no-repeat center center / cover;;
+
+
+
+  
+}
+
+
+
+h1{
+    color: white;
+}
+
+
+
+.login{
+    background-color: gray;
+    padding: 30px 40px;
+    border-radius: 0 5px 15px gray;
+    width: 100%;
+    max-width:350px ;
+}
+
+
+.form{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: black;
+}
+
+input{
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+
+input,focus{
+    border-color: black;
+}
+.button{
+    text-align: center;
+}
+
+
+button{
+    background-color: black;
+   ;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+}
+ 
+ 
+
+
+

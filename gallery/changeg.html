@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>የመረጃ ማስተካከያ</title>
+  <link rel="stylesheet" href="css/changeg.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>🔐 የመረጃ ማስተካከያ</h2>
+
+    <form action="/change-gallery" method="POST" class="change-form" id="changeForm">
+      <div class="form-group">
+        <label>👤 አሁን ያለው ስም</label>
+        <input type="text" name="currentUsername" required />
+      </div>
+
+      <div class="form-group">
+        <label>🔑 አሁን ያለው ይለፍ ቃል</label>
+        <input type="password" name="currentPassword" required />
+      </div>
+
+      <div class="form-group">
+        <label>🆕 አዲስ ስም</label>
+        <input type="text" name="newUsername" required />
+      </div>
+
+      <div class="form-group">
+        <label>🆕 አዲስ ይለፍ ቃል</label>
+        <input type="password" name="newPassword" required />
+      </div>
+
+      <button type="submit" class="submit-btn">✅ ቀይር</button>
+    </form>
+
+    <!-- Optional feedback display -->
+    <div id="message"></div>
+  </div>
+  <script src="js/changeg.js"></script>
+</body>
+</html>

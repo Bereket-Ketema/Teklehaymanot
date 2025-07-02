@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የሀሳብ አስተዳደር</title>
+  <link rel="stylesheet" href="css/suggest.css">
+</head>
+<body>
+  <div class="container">
+    <h1>የተላኩ ሀሳቦች</h1>
+      <a href="/logout" class="logout-btn" style="margin-left: 700px;"><button>🚪 ውጣ</button></a><br><br><br>
+    <div id="suggestionList"></div>
+  </div>
+
+  <script>
+    // Fetch all suggestions
+    fetch('/admin/suggestions')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('suggestionList');
+        if (data.length === 0) {
+          list.innerHTML = '<p>ምንም ሀሳብ አልተገኘም።</p>';
+          return;
+        }
+
+        data.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'suggestion-box';
+          div.innerHTML = `
+            <p>${item.message}</p>
+            <small>ቀን: ${new Date(item.submitted_at).toLocaleString()}</small><br/>
+            <button onclick="deleteSuggestion(${item.id})">ሀሳቡን አስወግድ</button>
+          `;
+          list.appendChild(div);
+        });
+      });
+
+    // Delete suggestion
+    function deleteSuggestion(id) {
+      if (!confirm('እርግጠኛ ነዎት ሀሳቡን ለመሰረዝ?')) return;
+      fetch(`/admin/delete/${id}`, { method: 'DELETE' })
+        .then(res => res.text())
+        .then(() => location.reload());
+    }
+  </script>
+  <script src="js/suggest.js"></script>
+</body>
+</html>

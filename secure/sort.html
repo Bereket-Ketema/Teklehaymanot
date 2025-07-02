@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የሰዎች መፈለጊያ</title>
+  <link rel="stylesheet" href="css/admins.css">
+</head>
+<body>
+  <div class="container">
+    <h2>መስክ ይምረጡ እና የመፈለጊያ ዋጋ ያስገቡ</h2>
+    <a href="/logout" style="margin-left: 1100px;" class="logout-btn">🚪 ውጣ</a><br><br>
+
+    <label for="fieldSelect">መስክ ምርጫ:</label>
+    <select id="fieldSelect" onchange="updateValueInput()">
+      <option value="">-- መስክ ይምረጡ --</option>
+      <option value="ስም">ስም</option>
+      <option value="የአባት_ስም">የአባት ስም</option>
+      <option value="የአያት_ስም">የአያት ስም</option>
+      <option value="የእናት_ስም">የእናት ስም</option>
+      <option value="የክርስትና_ስም">የክርስትና ስም</option>
+      <option value="የባለቤት_ስም">የባለቤት ስም</option>
+      <option value="ፆታ">ፆታ</option>
+      <option value="እድሜ">እድሜ</option>
+      <option value="ንሰሃ_አባት">ንሰሃ አባት</option>
+      <option value="ቀጠና">ቀጠና</option>
+      <option value="ሙያ">ሙያ</option>
+    </select><br>
+
+    <div id="valueContainer" style="margin-top: 10px;">
+      <!-- Dynamic input or dropdown will be shown here -->
+    </div><br><br>
+
+    <button onclick="searchPeople()">ፈልግ</button><br><br>
+
+    <table id="peopleTable">
+      <thead>
+        <tr>
+          <th>ስም</th>
+          <th>የአባት ስም</th>
+          <th>የአያት ስም</th>
+          <th>የእናት ስም</th>
+          <th>የክርስትና ስም</th>
+          <th>የባለቤት ስም</th>
+          <th>ልጆች</th>
+          <th>እድሜ</th>
+          <th>ፆታ</th>
+          <th>ንሰሃ አሎት</th>
+          <th>ንሰሃ አባት</th>
+          <th>ቤት ቁጥር</th>
+          <th>ቀጠና</th>
+          <th>ትምህርት</th>
+          <th>ሙያ</th>
+          <th>ስልክ</th>
+          <th>አስወግድ</th>
+        </tr>
+      </thead>
+      <tbody id="peopleBody"></tbody>
+    </table>
+  </div>
+
+  <script src="js/sort.js"></script>
+</body>
+</html>
