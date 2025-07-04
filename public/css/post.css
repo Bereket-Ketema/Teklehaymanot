@@ -1,59 +1,101 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #2c3e50;
   padding: 2rem;
-  color: #111827;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2rem;
-  color: #1f2937;
+  color: #2e86de;
+  font-size: 2.2rem;
 }
 
-#newsContainer {
+/* News List Layout */
+.news-list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 800px;
-  margin: auto;
 }
 
-.news-card {
-  display: flex;
-  gap: 1.5rem;
-  background-color: #ffffff;
+/* News Card */
+.news-item {
+  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
   transition: transform 0.2s ease;
+  position: relative;
 }
 
-.news-card:hover {
-  transform: translateY(-3px);
+.news-item:hover {
+  transform: scale(1.01);
 }
 
-.news-card img {
-  width: 200px;
-  height: auto;
+.news-item h3 {
+  color: #34495e;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+/* News Image */
+.news-item img {
+  width: 100%;
+  height: 250px;
   object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.content {
-  padding: 1rem 1.2rem;
+.news-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
 }
 
-.content h3 {
-  margin-bottom: 0.5rem;
-  color: #2563eb;
+.news-item small {
+  color: #888;
+  font-style: italic;
 }
 
-.content p {
-  margin-bottom: 0.5rem;
-  color: #374151;
+/* Lightbox/Fullscreen image view */
+#lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.content small {
-  color: #6b7280;
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+#lightbox:target {
+  display: flex;
 }

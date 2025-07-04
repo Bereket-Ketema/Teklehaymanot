@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ዜና ማጥፊያ</title>
+  <meta charset="UTF-8" />
+  <title>Delete News</title>
   <link rel="stylesheet" href="css/news-delete.css" />
 </head>
 <body>
-  <h2>የታዘዙ ዜናዎችን ማጥፊያ</h2>
-
-  <ul id="newsList"></ul>
+  <div class="container">
+    <h2>🗑️ Delete News</h2>
+    <ul id="newsList" class="news-list"></ul>
+  </div>
 
   <script>
-    async function loadNews() {
-      const response = await fetch('/news');
-      const news = await response.json();
-      const list = document.getElementById('newsList');
-      list.innerHTML = '';
-
-      news.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <span>${item.title}</span>
-          <button onclick="deleteNews(${item.id}, this)">🗑 Delete</button>
-        `;
-        list.appendChild(li);
+    fetch('/news')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('newsList');
+        data.forEach(news => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <div class="news-row">
+              <span>${news.title}</span>
+              <button onclick="deleteNews(${news.id})">Delete</button>
+            </div>
+          `;
+          list.appendChild(li);
+        });
       });
-    }
 
-    async function deleteNews(id, btn) {
-      if (!confirm('ይህን ዜና በመሰረዝ ይፈልጋሉ?')) return;
-
-      const res = await fetch('/api/news/' + id, { method: 'DELETE' });
-      if (res.ok) {
-        btn.closest('li').remove();
-        alert('✅ በትክክል ተሰርዟል።');
-      } else {
-        alert('❌ ማጥፋት አልተቻለም።');
+    function deleteNews(id) {
+      if (confirm("Are you sure you want to delete this news?")) {
+        fetch(`/news/${id}`, { method: 'DELETE' })
+          .then(res => res.text())
+          .then(msg => {
+            alert(msg);
+            location.reload();
+          });
       }
     }
-
-    window.onload = loadNews;
   </script>
 </body>
 </html>

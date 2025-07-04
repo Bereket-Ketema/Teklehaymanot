@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Post News</title>
   <link rel="stylesheet" href="css/news.css" />
 </head>
 <body>
-  <h2>📰 Post News</h2>
-  <div id="alertBox" class="alert" style="display: none;"></div>
+  <div class="form-container">
+    <h2>📝 Post News</h2>
+    <form id="newsForm" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="News Title" required /><br />
+      <textarea name="content" placeholder="News Content" required></textarea><br />
+      <input type="file" name="image" accept="image/*" required /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-  <form id="newsForm">
-    <input type="text" name="title" placeholder="Title" required />
-    <textarea name="content" placeholder="Write your news..." required></textarea>
-    <input type="file" name="image" accept="image/*" required />
-    <button type="submit">Post</button>
-  </form>
-
-  <script src="js/newsPost.js"></script>
+  <script>
+    const form = document.getElementById('newsForm');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const res = await fetch('/news', {
+        method: 'POST',
+        body: formData
+      });
+      if (res.ok) {
+        alert('✅ News posted successfully!');
+        form.reset();
+      } else {
+        alert('❌ Failed to post news.');
+      }
+    });
+  </script>
 </body>
 </html>
