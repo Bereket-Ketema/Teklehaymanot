@@ -108,7 +108,7 @@ changeGalleryPassword(app,fs);
 
 //posts
 // 📰 Insert news
-postNews(app,db);
+postNews(app,db,upload);
 
 // 🗑️ Delete news
 deleteNews(app,db);

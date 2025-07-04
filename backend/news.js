@@ -1,4 +1,4 @@
-function postNews(app,db){
+function postNews(app,db,upload){
         // 📰 Insert news
     app.post('/news', upload.single('image'), (req, res) => {
     const { title, content } = req.body;
