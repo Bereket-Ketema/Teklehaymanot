@@ -3,8 +3,8 @@ function adminLogin(app){
     app.post('/admin-login', (req, res) => {
       const { username, password } = req.body;
       if (
-        username === process.env.ADMIN_USERNAME &&
-        password === process.env.ADMIN_PASSWORD
+        username === process.env.MAIN_ADMIN_USERNAME &&
+        password === process.env.MAIN_ADMIN_PASSWORD
       ) {
         req.session.loggedIn = true;
         return res.redirect('/secure/inter.html'); // On success, redirect

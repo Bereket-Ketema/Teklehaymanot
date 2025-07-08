@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የተመዘገቡ ምዕመናን ብዛት</title>
+  <link rel="stylesheet" href="css/count.css">
+</head>
+<body>
+  <h1>የተመዘገቡ ምዕመናን ብዛት</h1>
+  <div class="count-box">
+    <div>ድምር ብዛት:</div>
+    <div class="number" id="totalCount">Loading...</div>
+  </div>
+
+  <script>
+    fetch('/api/people/count')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('totalCount').innerText = data.total;
+      })
+      .catch(err => {
+        document.getElementById('totalCount').innerText = 'ስህተት አጋጠመ።';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

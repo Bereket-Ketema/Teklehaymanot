@@ -185,3 +185,158 @@ footer {
   font-size: 14px;
   border-top: 3px solid #ffda66;
 }
+
+/* Language Button */
+#language {
+  background-color: #007BFF;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 140px;
+  height: 50px;
+  text-decoration: none;
+  margin-left: 1000px;
+  margin-top: -15px;
+}
+
+#language:hover {
+  background-color: #668fff;
+  color: #1f1f2e;
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 10px;
+  margin-left: 80px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 10px;
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* -------------------- Responsive for Phones -------------------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .main-header {
+    padding: 30px 15px;
+  }
+
+  .main-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .main-header p {
+    font-size: 1rem;
+  }
+
+  .navigation-buttons {
+    top: 15px;
+    left: 15px;
+  }
+
+  .nav-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .hero {
+    height: 250px;
+  }
+
+  .overlay {
+    bottom: 20px;
+    left: 20px;
+    padding: 20px 25px;
+    max-width: 90%;
+  }
+
+  .overlay h2 {
+    font-size: 1.4rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .history-section {
+    padding: 40px 15px;
+  }
+
+  .history-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .history-section p {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  #btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  .contact-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-section p {
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 15px;
+  }
+
+  /* ✅ Reposition language button to right */
+  #language {
+    margin: 10px 15px 0 auto;
+    display: block;
+    width: 120px;
+    height: 45px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .social-icons {
+    margin: 10px auto 0;
+    text-align: center;
+  }
+
+  .social-icons a {
+    margin: 8px;
+  }
+
+  .social-icons img {
+    width: 35px;
+    height: 35px;
+  }
+}

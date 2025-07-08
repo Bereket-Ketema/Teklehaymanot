@@ -14,7 +14,7 @@ document.getElementById('suggestionForm').addEventListener('submit', async funct
     alert(message); // Show the server message
 
     // ✅ Only redirect if it was a success message
-    if (message.includes('አመሰግናለሁ፣ ሀሳብዎ ተቀባ!') || message.includes('🎉')) {
+    if (message.includes('እናመሰግናለን ሀሳብዎ ተቀባይነት አግኝቷል!') || message.includes('🎉')) {
       setTimeout(() => {
         window.location.href = '/'; // Homepage
       }, 3000);

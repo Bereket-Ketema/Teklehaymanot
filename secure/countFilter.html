@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የተመዘገቡ በመስክ ቁጥር</title>
+  <link rel="stylesheet" href="css/countFilter.css">
+</head>
+<body>
+  <h2>በመስክ የተመዘገቡ ምዕመናን ብዛት</h2>
+
+  <label for="fieldSelect">መስክ ምርጫ:</label>
+  <select id="fieldSelect">
+    <option value="">-- መስክ ይምረጡ --</option>
+    <option value="ስም">ስም</option>
+    <option value="የአባት_ስም">የአባት ስም</option>
+    <option value="የአያት_ስም">የአያት ስም</option>
+    <option value="የእናት_ስም">የእናት ስም</option>
+    <option value="የክርስትና_ስም">የክርስትና ስም</option>
+    <option value="የባለቤት_ስም">የባለቤት ስም</option>
+    <option value="ፆታ">ፆታ</option>
+    <option value="እድሜ">እድሜ</option>
+    <option value="ንሰሃ_አባት">ንሰሃ አባት</option>
+    <option value="ቀጠና">ቀጠና</option>
+    <option value="ሙያ">ሙያ</option>
+  </select><br><br>
+
+  <label for="valueInput">ዋጋ ያስገቡ:</label>
+  <input type="text" id="valueInput" placeholder="ምሳ. ፆታ = ወንድ"><br>
+
+  <button onclick="fetchCount()">ቁጥር አሳይ</button>
+
+  <div class="result" id="countResult"></div>
+
+  <script>
+    function fetchCount() {
+      const field = document.getElementById('fieldSelect').value;
+      const value = document.getElementById('valueInput').value.trim();
+
+      if (!field || !value) {
+        alert("እባክዎ መስክንና ዋጋን ያስገቡ።");
+        return;
+      }
+
+      fetch(`/api/people/count-filtered?field=${encodeURIComponent(field)}&value=${encodeURIComponent(value)}`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('countResult').innerText = `ጠቅላላ ቁጥር: ${data.total}`;
+        })
+        .catch(err => {
+          document.getElementById('countResult').innerText = 'ስህተት አጋጠመ።';
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>

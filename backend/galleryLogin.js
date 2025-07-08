@@ -3,8 +3,8 @@ function galleryLogin(app){
 app.post('/gallery-login', (req, res) => {
   const { username, password } = req.body;
   if (
-    username === process.env.GALLERY_USERNAME &&
-    password === process.env.GALLERY_PASSWORD
+    username === process.env.GALLERY_ADMIN_USERNAME &&
+    password === process.env.GALLERY_ADMIN_PASSWORD
   ) {
     req.session.galleryLoggedIn = true;
     return res.redirect('/gallery/interg.html'); // or your first gallery page

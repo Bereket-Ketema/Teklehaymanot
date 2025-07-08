@@ -1,44 +1,7 @@
 document.getElementById('registerForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  const formData = new FormData(this);
-  const data = new URLSearchParams(formData);
-
-  try {
-    const response = await fetch('/register', {
-      method: 'POST',
-      body: data,
-    });
-
-    const message = await response.text();
-    alert(message); // Show the server message
-
-    // ✅ Only redirect if it was a success message
-    if (message.includes('ተመዝግቧል') || message.includes('🎉')) {
-      setTimeout(() => {
-        window.location.href = '/'; // Homepage
-      }, 3000);
-    }
-
-  } catch (error) {
-    console.error('Registration error:', error);
-    alert('😢 ስህተት ተፈጥሯል። እባክዎን እንደገና ይሞክሩ።');
-  }
-});
-
-
-
-function checkNiseha() {
-  var niseha = document.querySelector("select[name='ንሰሃ_አሎት']").value;
-  var nisehaAbat = document.getElementById("ንሰሃ_አባት");
-  if (niseha === "አለኝ") {
-    nisehaAbat.style.display = "block";
-  } else {
-    nisehaAbat.style.display = "none";
-  }
-}
-
-document.querySelector("form").addEventListener("submit", function (e) {
+  // 👉 VALIDATIONS
   const dob = document.querySelector("input[name='የትውልድ_ቀን']").value;
   const age = document.querySelector("input[name='እድሜ']").value;
   const phone = document.querySelector("input[name='ስልክ_ቁጥር']").value;
@@ -58,43 +21,61 @@ document.querySelector("form").addEventListener("submit", function (e) {
     }
     if (live <= 0 || live > 120) {
       alert("እባክዎን ትክክለኛ የትውልድ ቀን ያስገቡ።");
-      e.preventDefault();
       return;
     }
   }
 
-  if (age <= 0 || age> 120) {
-      alert("እባክዎን ትክክለኛ እድሜ ያስገቡ።");
-      e.preventDefault();
-      return;
-    }
-  // 2. Phone number validation (must be 10 digits)
+  if (age <= 0 || age > 120) {
+    alert("እባክዎን ትክክለኛ እድሜ ያስገቡ።");
+    return;
+  }
+
+  // 2. Phone validation
   const phonePattern = /^\d{10}$/;
   if (!phonePattern.test(phone)) {
     alert("የስልክ ቁጥሩ ትክክለኛ አይደለም። 10 አሃዞች መኖሩ አለበት።");
-    e.preventDefault();
     return;
   }
 
-  // 3. Email format validation (if provided)
+  // 3. Email validation
   if (email && !/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(email)) {
     alert("እባክዎን ትክክለኛ ኢሜይል ያስገቡ።");
-    e.preventDefault();
     return;
   }
 
-  // 4. Children count validation (if provided)
+  // 4. Children
   if (children && (children < 0 || children > 30)) {
     alert("የልጆች ብዛት ትክክለኛ አይደለም።");
-    e.preventDefault();
     return;
   }
 
-  // 5. Years stayed validation (if provided)
+  // 5. Years stayed
   if (yearsStay && yearsStay < 0) {
     alert("የቆየበት ዘመን አይቀንም። እባክዎን ትክክለኛ ያስገቡ።");
-    e.preventDefault();
     return;
   }
 
+  // 👉 IF ALL PASSED, continue with sending
+  const formData = new FormData(this);
+  const data = new URLSearchParams(formData);
+
+  try {
+    const response = await fetch('/register', {
+      method: 'POST',
+      body: data,
+    });
+
+    const message = await response.text();
+    alert(message);
+
+    if (message.includes('ተመዝግቧል') || message.includes('🎉')) {
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 3000);
+    }
+
+  } catch (error) {
+    console.error('Registration error:', error);
+    alert('😢 ስህተት ተፈጥሯል። እባክዎን እንደገና ይሞክሩ።');
+  }
 });

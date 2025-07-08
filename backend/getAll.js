@@ -7,4 +7,15 @@ function allPeople(app,db){
 });
 }
 
-module.exports={allPeople};
+// Add this in the same file or another one and import it
+function countPeople(app, db) {
+  app.get('/api/people/count', (req, res) => {
+    db.query('SELECT COUNT(*) AS total FROM ምዕመናን', (err, result) => {
+      if (err) return res.status(500).json(err);
+      res.json(result[0]); // returns { total: number }
+    });
+  });
+}
+
+
+module.exports={allPeople,countPeople};

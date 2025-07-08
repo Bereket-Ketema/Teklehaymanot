@@ -17,4 +17,27 @@ app.get('/api/people/filter', (req, res) => {
 });
 }
 
-module.exports={filterPeople};
+function countFilteredPeople(app, db) {
+  app.get('/api/people/count-filtered', (req, res) => {
+    const { field, value } = req.query;
+
+    // Validate field
+    const allowedFields = [
+      'ስም', 'የአባት_ስም', 'የአያት_ስም', 'የእናት_ስም',
+      'የክርስትና_ስም', 'የባለቤት_ስም', 'ፆታ', 'እድሜ',
+      'ንሰሃ_አባት', 'ቀጠና', 'ሙያ'
+    ];
+
+    if (!allowedFields.includes(field)) {
+      return res.status(400).json({ error: 'Invalid field' });
+    }
+
+    const sql = `SELECT COUNT(*) AS total FROM ምዕመናን WHERE \`${field}\` = ?`;
+    db.query(sql, [value], (err, result) => {
+      if (err) return res.status(500).json(err);
+      res.json(result[0]); // returns { total: ... }
+    });
+  });
+}
+
+module.exports={filterPeople,countFilteredPeople};

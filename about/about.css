@@ -1,0 +1,186 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f8fa;
+  color: #333;
+  line-height: 1.7;
+}
+
+.hero {
+  background: linear-gradient(to right, #4a148c, #6a1b9a);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.section h2 {
+  color: #4a148c;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.section p {
+  font-size: 1.05rem;
+  margin-bottom: 15px;
+}
+
+.section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section li {
+  background: #e1bee7;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.creator {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.creator img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.tech-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-box span {
+  background: #ce93d8;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #4a148c;
+  color: white;
+  margin-top: 30px;
+}
+
+/* English Button Default Style (Desktop) */
+#english {
+  margin-left: 1100px;
+  margin-top: -5px;
+  background-color: #57a9af;
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 10px;
+  margin-left: 200px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 10px;
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* ✅ Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 20px 15px;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .section p,
+  .section li {
+    font-size: 0.95rem;
+  }
+
+  .creator img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .tech-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 🔧 English Button Responsive - Right Top on Mobile */
+  #english {
+    margin: 10px 10px 0 auto;
+    display: block;
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+    position: relative;
+    right: 0;
+  }
+
+  .social-icons {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .social-icons img {
+    width: 35px;
+    height: 35px;
+  }
+}

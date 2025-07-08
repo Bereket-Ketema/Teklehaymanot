@@ -78,3 +78,8 @@ input[type="checkbox"][name="እርግጠኝነት"] {
 label input[type="checkbox"][name="እርግጠኝነት"] + * {
   vertical-align: middle;
 }
+
+.btn{
+  margin-left: 1100px;
+  margin-top: 5px;
+}

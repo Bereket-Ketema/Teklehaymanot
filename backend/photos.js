@@ -43,8 +43,8 @@ app.get('/photosWithId/:category', (req, res) => {
 app.delete('/delete/:id', (req, res) => {
   const photoId = req.params.id;
   db.query('DELETE FROM photos WHERE id = ?', [photoId], (err) => {
-    if (err) return res.status(500).send('Delete failed');
-    res.send('Deleted successfully');
+    if (err) return res.status(500).send('ማጥፋት አልተሳካም');
+    res.send('🗑️በተሳካ ሁኔታ ተሰርዟል');
   });
 });
 }

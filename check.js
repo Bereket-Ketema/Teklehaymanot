@@ -9,10 +9,10 @@ const app = express();
 require('dotenv').config();
 const { adminLogin,adminLogout,isAdmin } = require('./backend/admin.js');
 const { galleryLogin,galleryLogout,isGalleryUser } = require('./backend/galleryLogin.js');
-const { allPeople } = require('./backend/getAll.js');
-const { registration } = require('./backend/registration.js');
+const { allPeople, countPeople } = require('./backend/getAll.js');
+const { registration, registrationor } = require('./backend/registration.js');
 const { deletePeople } = require('./backend/deletePeople.js');
-const { filterPeople } = require('./backend/filterPeople.js');
+const { filterPeople, countFilteredPeople } = require('./backend/filterPeople.js');
 const { photoUpload, fetchPhoto, photoDelete } = require('./backend/photos.js');
 const { submissionMessage, fetchMessage,deleteMessage } = require('./backend/submition.js');
 const { changeAdminPassword, changeGalleryPassword } = require('./backend/changePassword.js');
@@ -40,6 +40,7 @@ adminLogout(app);
 // Gallery-logout
 galleryLogout(app);
 
+
 app.use(express.static('public/'));
 
 app.use('/secure', isAdmin, express.static(path.join(__dirname, 'secure')));
@@ -48,6 +49,7 @@ app.use('/gallery', isGalleryUser, express.static(path.join(__dirname, 'gallery'
 // Serve static files like HTML from "public" folder
 app.use('/registration', express.static(path.join(__dirname, 'registration')));
 app.use('/suggestion', express.static(path.join(__dirname, 'suggestion')));
+app.use('/about', express.static(path.join(__dirname, 'about')));
 
 // Connect to MySQL
 const db = mysql.createConnection({
@@ -69,8 +71,16 @@ const upload = multer({ storage: storage });
 // Handle POST form submission
 registration(app,db);
 
+registrationor(app,db);
+
 // Get all people
 allPeople(app,db);
+
+//count all people
+countPeople(app,db);
+
+//count filtered people
+countFilteredPeople(app,db);
 
 // Delete person by ID
 deletePeople(app,db);

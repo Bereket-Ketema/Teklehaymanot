@@ -15,8 +15,8 @@ function deleteNews(app,db){
     app.delete('/news/:id', (req, res) => {
   const id = req.params.id;
   db.query('DELETE FROM news WHERE id = ?', [id], (err) => {
-    if (err) return res.status(500).send('Delete failed');
-    res.send('🗑️ Deleted successfully');
+    if (err) return res.status(500).send('ማጥፋት አልተሳካም');
+    res.send('🗑️ በተሳካ ሁኔታ ተሰርዟል');
   });
 });
 }

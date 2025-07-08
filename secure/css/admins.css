@@ -71,3 +71,14 @@ button {
 button:hover {
   background-color: #c92e36;
 }
+#length{
+  background-color: #3842ca;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  margin-left: 650px;
+}

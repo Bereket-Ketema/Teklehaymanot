@@ -112,3 +112,114 @@ button:hover {
   border-radius: 12px;
   box-shadow: 0 0 15px black;
 }
+/* -------------------- Responsive for Phones -------------------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .main-header {
+    padding: 30px 15px;
+  }
+
+  .main-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .main-header p {
+    font-size: 1rem;
+  }
+
+  .navigation-buttons {
+    top: 15px;
+    left: 15px;
+  }
+
+  .nav-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .hero {
+    height: 250px;
+  }
+
+  .overlay {
+    bottom: 20px;
+    left: 20px;
+    padding: 20px 25px;
+    max-width: 90%;
+  }
+
+  .overlay h2 {
+    font-size: 1.4rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .history-section {
+    padding: 40px 15px;
+  }
+
+  .history-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .history-section p {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  #btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  .contact-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-section p {
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 15px;
+  }
+
+  #language {
+    margin: 20px auto;
+    display: block;
+    width: 80%;
+    height: 45px;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+
+  .social-icons {
+    margin: 10px auto 0;
+    text-align: center;
+  }
+
+  .social-icons a {
+    margin: 8px;
+  }
+
+  .social-icons img {
+    width: 35px;
+    height: 35px;
+  }
+}

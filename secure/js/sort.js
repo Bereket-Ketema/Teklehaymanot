@@ -40,6 +40,7 @@ function updateValueInput() {
       }
     }
 
+
     function searchPeople() {
       const field = document.getElementById("fieldSelect").value.trim();
       const value = document.getElementById("valueInput")?.value.trim();
@@ -88,6 +89,8 @@ function updateValueInput() {
           console.error(err);
         });
     }
+
+    
 
     function deletePerson(id) {
       if (confirm("በእርግጥ ማስወገድ ትፈልጋለህ?")) {
