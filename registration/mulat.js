@@ -1,3 +1,12 @@
+  function checkNiseha() {
+    var niseha = document.querySelector("select[name='ንሰሃ_አሎት']").value;
+    var nisehaAbat = document.getElementById("ንሰሃ_አባት");
+    if (niseha === "አለኝ") {
+      nisehaAbat.style.display = "block";
+    } else {
+      nisehaAbat.style.display = "none";
+    }
+  }
 document.getElementById('registerForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
