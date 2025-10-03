@@ -6,6 +6,7 @@ require('dotenv').config();
 const mysql = require('mysql2');
 const path = require('path');
 const app = express();
+const PORT = process.env.PORT || 3000;
 const { adminLogin,adminLogout,isAdmin } = require('./backend/admin.js');
 const { galleryLogin,galleryLogout,isGalleryUser } = require('./backend/galleryLogin.js');
 const { allPeople, countPeople, allChild, countChild, status } = require('./backend/getAll.js');
@@ -181,6 +182,6 @@ viewNews(app,db);
 
 
 
-app.listen(3000, () => {
-  console.log('Server started on http://localhost:3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
