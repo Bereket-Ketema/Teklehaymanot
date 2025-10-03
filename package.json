@@ -4,7 +4,7 @@
   "description": "This web is designed to serve the church with history ,registration, and with support of youtube and also accounts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +27,9 @@
   "bugs": {
     "url": "https://github.com/Bereket-Ketema/Teklehaymanot/issues"
   },
-  "homepage": "https://github.com/Bereket-Ketema/Teklehaymanot#readme"
+  "homepage": "https://github.com/Bereket-Ketema/Teklehaymanot#readme",
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "supertest": "^7.1.3"
+  }
 }
-
-

@@ -83,7 +83,12 @@
       // ✅ Redirect if success
       if (message.includes("Galmeen") || message.includes('🎉')) {
         setTimeout(() => {
-          window.location.href = '/'; // Go to homepage
+          if ( children > 0) {
+           window.location.href = 'child.html';
+        }
+        else{
+          window.location.href = '/';
+        }
         }, 3000);
       }
 

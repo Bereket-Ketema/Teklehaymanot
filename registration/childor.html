@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+  <meta charset="UTF-8">
+  <title>Furmaata Dubbii Ilmaan</title>
+  <link rel="stylesheet" href="css/child.css">
+</head>
+<body>
+  <a href="child.html"><button class="btn">አማርኛ</button></a>
+  <h2>Galmee Ilmaan</h2>
+
+  <label for="numChildren">Lakkoofsa Ilmaan:</label>
+  <input type="number" id="numChildren" min="1" max="10" placeholder="Lakkoofsa Ilmaan Galchi">
+
+  <div id="formContainer" class="form-container"></div>
+
+  <fieldset id="confirmationSection" style="display: none;">
+    <legend>5. Ragaa Kennuu</legend>
+    <label>
+      <input type="checkbox" name="እርግጠኝነት" id="declaration" required>
+      Odeeffannoon ani kenne sirrii fi dhugaa ta’uu isaati nan mirkaneessa.
+    </label>
+    <label>Guyyaa:
+      <input type="text" name="የማስገባት_ቀን" placeholder="02/11/2017" pattern="\d{2}/\d{2}/\d{4}" required>
+    </label>
+    <label>Mallattoo(maqaa kessan barressaa):
+      <input type="text" name="ፊርማ" required>
+    </label>
+  </fieldset>
+
+  <!-- Submit Button -->
+  <button onclick="submitForms()" id="submitBtn" style="display: none;">Galchi</button>
+
+  <script src="js/childor.js"></script>
+</body>
+</html>

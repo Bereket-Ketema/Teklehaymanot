@@ -1,26 +1,27 @@
 const express = require('express');
 const session = require('express-session');
 const multer = require('multer');
-const fs = require('fs');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const mysql = require('mysql2');
 const path = require('path');
 const app = express();
-require('dotenv').config();
 const { adminLogin,adminLogout,isAdmin } = require('./backend/admin.js');
 const { galleryLogin,galleryLogout,isGalleryUser } = require('./backend/galleryLogin.js');
-const { allPeople, countPeople } = require('./backend/getAll.js');
-const { registration, registrationor } = require('./backend/registration.js');
-const { deletePeople } = require('./backend/deletePeople.js');
-const { filterPeople, countFilteredPeople } = require('./backend/filterPeople.js');
+const { allPeople, countPeople, allChild, countChild, status } = require('./backend/getAll.js');
+const { registration, registrationor, registrationChild, registrationChildor } = require('./backend/registration.js');
+const { deletePeople, deleteChildren, deleteBaptist } = require('./backend/deletePeople.js');
+const { filterPeople, countFilteredPeople, filterChild } = require('./backend/filterPeople.js');
 const { photoUpload, fetchPhoto, photoDelete } = require('./backend/photos.js');
 const { submissionMessage, fetchMessage,deleteMessage } = require('./backend/submition.js');
 const { changeAdminPassword, changeGalleryPassword } = require('./backend/changePassword.js');
 const { postNews, deleteNews, viewNews } = require('./backend/news.js');
+const { allDeath, countDeath, allBetray, countBetray } = require('./backend/death.js');
+const {registrationBaptist, registrationBaptistor, getBaptismMembers} = require('./backend/baptistes.js');
 
 // Use body-parser to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json());// for POST requests
 
 app.use(session({
   secret: 'my_secret_key',
@@ -28,11 +29,9 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-// admin Login route
-adminLogin(app);
 
-// 🚪 Gallery login route
-galleryLogin(app);
+
+
 
 // admin-Logout
 adminLogout(app);
@@ -51,33 +50,76 @@ app.use('/registration', express.static(path.join(__dirname, 'registration')));
 app.use('/suggestion', express.static(path.join(__dirname, 'suggestion')));
 app.use('/about', express.static(path.join(__dirname, 'about')));
 
-// Connect to MySQL
+
+
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',         // change to your MySQL user
-  password: '1394',         // your password here
-  database: 'ተክልዬ'   // your DB name
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT || 4000,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  ssl: {
+    rejectUnauthorized: true, // enforce secure SSL
+  }
 });
 
 db.connect((err) => {
-  if (err) throw err;
-  console.log('✅ MySQL Connected!');
+  if (err) {
+    console.error('❌ MySQL connection error:', err.message);
+  } else {
+    console.log('✅ Connected to TiDB Serverless!');
+  }
 });
 
 // Multer to handle image uploads in memory
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+// admin Login route
+adminLogin(app,db);
+
+// 🚪 Gallery login route
+galleryLogin(app,db);
+
 // Handle POST form submission
 registration(app,db);
 
 registrationor(app,db);
 
+registrationChild(app,db);
+
+registrationChildor(app,db);
+
+registrationBaptist(app,db);
+
+registrationBaptistor(app,db);
+
+getBaptismMembers(app,db);
+
 // Get all people
 allPeople(app,db);
 
+//get all child
+allChild(app,db);
+
+//count all child
+countChild(app,db);
+
+//get all death
+allDeath(app,db);
+
+//get all betray
+allBetray(app,db);
+
 //count all people
 countPeople(app,db);
+
+//count betray
+countBetray(app,db);
+
+//count death peoples
+countDeath(app,db);
+
 
 //count filtered people
 countFilteredPeople(app,db);
@@ -85,9 +127,20 @@ countFilteredPeople(app,db);
 // Delete person by ID
 deletePeople(app,db);
 
+//delete children by ID
+deleteChildren(app,db);
+
+deleteBaptist(app,db);
+
+//update status
+status(app,db);
+
 
 // 🔐 Secure filtering by admin-chosen allowed field and value
 filterPeople(app,db);
+
+//sort children
+filterChild(app,db);
 
 //photos
 // Upload photo with category
@@ -111,10 +164,10 @@ fetchMessage(app,db);
 deleteMessage(app,db);
 
 // Change credentials
-changeAdminPassword(app,fs);
+changeAdminPassword(app,db);
 
 // 🔁 Change gallery credentials route
-changeGalleryPassword(app,fs);
+changeGalleryPassword(app,db);
 
 //posts
 // 📰 Insert news
@@ -126,7 +179,8 @@ deleteNews(app,db);
 // 🌍 Get news for display
 viewNews(app,db);
 
-// Start the server
+
+
 app.listen(3000, () => {
   console.log('Server started on http://localhost:3000');
 });

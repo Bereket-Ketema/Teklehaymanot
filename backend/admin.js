@@ -1,19 +1,24 @@
-function adminLogin(app){
-    // Login route
-    app.post('/admin-login', (req, res) => {
-      const { username, password } = req.body;
-      if (
-        username === process.env.MAIN_ADMIN_USERNAME &&
-        password === process.env.MAIN_ADMIN_PASSWORD
-      ) {
+function adminLogin(app, db) {
+  app.post('/admin-login', (req, res) => {
+    const { username, password } = req.body;
+
+    const sql = `SELECT * FROM admin WHERE user = ? AND password = ?`;
+    db.query(sql, [username, password], (err, results) => {
+      if (err) {
+        console.error("DB Error:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+
+      if (results.length > 0) {
         req.session.loggedIn = true;
-        return res.redirect('/secure/inter.html'); // On success, redirect
+        return res.redirect('/secure/inter.html');
       } else {
-        // On failure, send error message with status 401 (Unauthorized)
         return res.status(401).send('❌ የተሳሳተ መረጃ፣ እባክዎ ደግመው ይሞክሩ።');
       }
     });
+  });
 }
+
 
 function adminLogout(app){
   app.get('/logout', (req, res) => {

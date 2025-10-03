@@ -13,8 +13,8 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>የተመዘገቡ ምዕመናን</h1>
-      <a href="#count-box"><button id="length">የምዕመናን ብዛት</button></a>
+      <h1>የተመዘገቡ ልጆች</h1>
+      <a href="#count-box"><button id="length">የልጆች ብዛት</button></a>
       <a href="/logout" class="logout-btn">🚪 ውጣ</a>
     </div>
 
@@ -26,19 +26,9 @@
           <th>የአያት ስም</th>
           <th>የእናት ስም</th>
           <th>የክርስትና ስም</th>
-          <th>የባለቤት ስም</th>
-          <th>ልጆች</th>
           <th>እድሜ</th>
           <th>ፆታ</th>
-          <th>ንሰሃ አሎት</th>
-          <th>ንሰሃ አባት</th>
-          <th>ቤት ቁጥር</th>
-          <th>ቀጠና</th>
-          <th>ትምህርት</th>
-          <th>ሙያ</th>
           <th>ስልክ</th>
-          <th>ሁኔታ</th>
-          <th>ለመቀየር</th>
           <th>አስወግድ</th>
         </tr>
       </thead>
@@ -72,14 +62,14 @@
       margin-top: 10px;
     }
   </style>
-  <h1>የተመዘገቡ ምዕመናን ብዛት</h1>
+  <h1>የተመዘገቡ ልጆች ብዛት</h1>
   <div class="count-box" id="count-box">
     <div>ድምር ብዛት:</div>
     <div class="number" id="totalCount">Loading...</div>
   </div>
 
   <script>
-    fetch('/api/people/count')
+    fetch('/api/child/count')
       .then(res => res.json())
       .then(data => {
         document.getElementById('totalCount').innerText = data.total;
@@ -91,6 +81,6 @@
   </script>
 
 
-  <script src="js/fetch.js"></script>
+  <script src="js/child.js"></script>
 </body>
 </html>

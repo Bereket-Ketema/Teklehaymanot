@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+  <meta charset="UTF-8">
+  <title>Galmee Kiristinaa</title>
+  <link rel="stylesheet" href="css/child.css">
+</head>
+<body>
+  <a href="baptism.html"><button class="btn">አማርኛ</button></a>
+  <h2>Galmee Kiristinaa</h2>
+
+  <div id="formContainer" class="form-container">
+    <h3>Odeeffannoo Namoota</h3>
+    <fieldset>
+      <legend>1. Odeeffannoo Namoota</legend>
+      <label>Maqaa: <input type="text" name="ስም" required></label>
+      <label>Maqaa Abbaa: <input type="text" name="የአባት_ስም"></label>
+      <label>Maqaa Akaakayyuu: <input type="text" name="የአያት_ስም"></label>
+      <label>Maqaa Haadha: <input type="text" name="የእናት_ስም"></label>
+      <label>Maqaa Kiristaanaa: <input type="text" name="የክርስትና_ስም"></label>
+      <label>Maqaa Abbaa Kiristaanaa gutu(የክርስትና አባት ስም): <input type="text" name="የክርስትና_አባት_ስም"></label>
+      <label>Korniyaa:
+        <select name="ፆታ" required>
+          <option value="">--Filadhu--</option>
+          <option value="Dhiira">Dhiira</option>
+          <option value="Dubartii">Dubartii</option>
+        </select>
+      </label>
+      <label>Guyyaa dhalootaa: 
+        <input type="text" name="የትውልድ_ቀን" placeholder="14/06/1990" pattern="\d{2}/\d{2}/\d{4}" required>
+      </label>
+      <label>Guyyaa Kiristinaa Itti Ka'ee: <input type="text" name="ክርስትና_የተነሳበት_ቀን" placeholder="14/06/2018" pattern="\d{2}/\d{2}/\d{4}" required></label>
+    </fieldset>
+  </div>
+
+  <fieldset id="confirmationSection">
+    <legend>Ragaa Kennuu</legend>
+    <label>
+      <input type="checkbox" name="እርግጠኝነት" id="declaration" required>
+      Odeeffannoon ani kenne sirrii fi dhugaa ta’uu isaati nan mirkaneessa.
+    </label>
+    <label>Guyyaa Galmee:
+      <input type="text" name="የማስገባት_ቀን" placeholder="02/11/2017" pattern="\d{2}/\d{2}/\d{4}" required>
+    </label>
+    <label>Mallattoo (maqaa barreessi):
+      <input type="text" name="ፊርማ" required>
+    </label>
+  </fieldset>
+
+  <!-- Submit Button -->
+  <button onclick="submitForm()" id="submitBtn">Galchi</button>
+
+  <script src="js/baptismor.js"></script>
+</body>
+</html>

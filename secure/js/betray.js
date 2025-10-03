@@ -9,7 +9,7 @@
     });
 
     // Fetch data from backend
-    fetch('/api/people')
+    fetch('/api/betray')
       .then(res => res.json())
       .then(data => {
         const tbody = document.getElementById('peopleBody');
@@ -35,9 +35,9 @@
             <td>${person.ሁኔታ || 'በቤተክርስቲያን ውስጥ'}</td>
             <td>
               <select onchange="updateStatus(${person.id}, this.value)">
-                <option>በቤተክርስቲያን ውስጥ</option>
-                <option>ሞተ</option>
                 <option>ካደ</option>
+                <option>ተመለሰ</option>
+                <option>ሞተ</option>
               </select>
             </td>
 
@@ -47,7 +47,6 @@
         });
       });
 
-      
       function updateStatus(id, status) {
       fetch(`/api/people/status/${id}`, {
         method: 'PUT',

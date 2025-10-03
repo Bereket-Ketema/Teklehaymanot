@@ -9,7 +9,7 @@
     });
 
     // Fetch data from backend
-    fetch('/api/people')
+    fetch('/api/death')
       .then(res => res.json())
       .then(data => {
         const tbody = document.getElementById('peopleBody');
@@ -32,42 +32,15 @@
             <td>${person.የትምህርት_ደረጃ}</td>
             <td>${person.ሙያ}</td>
             <td>${person.ስልክ_ቁጥር}</td>
-            <td>${person.ሁኔታ || 'በቤተክርስቲያን ውስጥ'}</td>
-            <td>
-              <select onchange="updateStatus(${person.id}, this.value)">
-                <option>በቤተክርስቲያን ውስጥ</option>
-                <option>ሞተ</option>
-                <option>ካደ</option>
-              </select>
-            </td>
-
             <td><button onclick="deletePerson(${person.id})">🗑️</button></td>
           `;
           tbody.appendChild(tr);
         });
       });
 
-      
-      function updateStatus(id, status) {
-      fetch(`/api/people/status/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status })
-      })
-      .then(res => res.text())
-      .then(msg => {
-        alert(msg);
-        location.reload(); // Refresh to update table
-      })
-      .catch(err => {
-        alert("ማስተካከል አልተሳካም።");
-        console.error(err);
-      });
-    }
-
     function deletePerson(id) {
       if (confirm("እርግጠኛ ነህ እንደምታስወግድ?")) {
-        fetch(`/api/people/${id}`, { method: 'DELETE' })
+        fetch(`/api/death/${id}`, { method: 'DELETE' })
           .then(() => location.reload());
       }
     }

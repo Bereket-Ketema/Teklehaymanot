@@ -13,7 +13,7 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>የተመዘገቡ ምዕመናን</h1>
+      <h1>የሞቱ ምዕመናን</h1>
       <a href="#count-box"><button id="length">የምዕመናን ብዛት</button></a>
       <a href="/logout" class="logout-btn">🚪 ውጣ</a>
     </div>
@@ -37,8 +37,6 @@
           <th>ትምህርት</th>
           <th>ሙያ</th>
           <th>ስልክ</th>
-          <th>ሁኔታ</th>
-          <th>ለመቀየር</th>
           <th>አስወግድ</th>
         </tr>
       </thead>
@@ -72,14 +70,14 @@
       margin-top: 10px;
     }
   </style>
-  <h1>የተመዘገቡ ምዕመናን ብዛት</h1>
+  <h1>የሞቱ ምዕመናን ብዛት</h1>
   <div class="count-box" id="count-box">
     <div>ድምር ብዛት:</div>
     <div class="number" id="totalCount">Loading...</div>
   </div>
 
   <script>
-    fetch('/api/people/count')
+    fetch('/api/death/count')
       .then(res => res.json())
       .then(data => {
         document.getElementById('totalCount').innerText = data.total;
@@ -91,6 +89,6 @@
   </script>
 
 
-  <script src="js/fetch.js"></script>
+  <script src="js/death.js"></script>
 </body>
 </html>

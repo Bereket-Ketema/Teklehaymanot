@@ -1,18 +1,24 @@
-function galleryLogin(app){
-   // 🚪 Gallery login route
-app.post('/gallery-login', (req, res) => {
-  const { username, password } = req.body;
-  if (
-    username === process.env.GALLERY_ADMIN_USERNAME &&
-    password === process.env.GALLERY_ADMIN_PASSWORD
-  ) {
-    req.session.galleryLoggedIn = true;
-    return res.redirect('/gallery/interg.html'); // or your first gallery page
-  } else {
-    return res.status(401).send('❌ የተሳሳተ መረጃ፣ እባክዎ ደግመው ይሞክሩ።');
-  }
-});
+function galleryLogin(app, db) {
+  app.post('/gallery-login', (req, res) => {
+    const { username, password } = req.body;
+    const sql = `SELECT * FROM gallery_admin WHERE user = ? AND password = ?`;
+
+    db.query(sql, [username, password], (err, results) => {
+      if (err) {
+        console.error("DB Error:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+
+      if (results.length > 0) {
+        req.session.galleryLoggedIn = true;
+        return res.redirect('/gallery/interg.html');
+      } else {
+        return res.status(401).send('❌ የተሳሳተ መረጃ፣ እባክዎ ደግመው ይሞክሩ።');
+      }
+    });
+  });
 }
+
 
 function galleryLogout(app){
     app.get('/gallery-logout', (req, res) => {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የልጆች መረጃ ቅፅ</title>
+  <link rel="stylesheet" href="css/child.css">
+</head>
+<body>
+  <a href="baptismor.html" ><button class="btn">Afaan Oromo</button></a>
+  <h2>የክርስትና መረጃ ቅፅ</h2>
+
+  <!-- <label for="numChildren">ልጆች ብዛት:</label>
+  <input type="number" id="numChildren" min="1" max="10" placeholder="ልጆች ቁጥር ያስገቡ"> -->
+
+        <div id="formContainer" class="form-container">
+        <h3>የክርስትና</h3>
+        <fieldset class="child-form">
+            <legend>1. የግለሰቡ መረጃ</legend>
+            <label>ስም: <input type="text" name="ስም" required></label>
+            <label>የአባት ስም: <input type="text" name="የአባት_ስም" required></label>
+            <label>የአያት ስም: <input type="text" name="የአያት_ስም"></label>
+            <label>የእናት ሙሉ ስም: <input type="text" name="የእናት_ስም"></label>
+            <label>የክርስትና ስም: <input type="text" name="የክርስትና_ስም"></label>
+            <label>የክርስትና አባት ሙሉ ስም: <input type="text" name="የክርስትና_አባት_ስም"></label>
+            <label>ፆታ:
+            <select name="ፆታ" required>
+                <option value="">--ይምረጡ--</option>
+                <option>ወንድ</option>
+                <option>ሴት</option>
+            </select>
+            </label>
+            <label>የትውልድ ቀን:
+            <input type="text" name="የትውልድ_ቀን" placeholder="14/06/1990" pattern="\d{2}/\d{2}/\d{4}" required>
+            </label>
+            <label>ክርስትና የተነሳበት ቀን: <input type="text" name="ክርስትና_የተነሳበት_ቀን" placeholder="14/06/2018" pattern="\d{2}/\d{2}/\d{4}" required></label>
+        </fieldset>
+        </div>
+
+        
+         <fieldset id="confirmationSection">
+        <legend>እርግጠኝነት</legend>
+        <label><input type="checkbox" name="እርግጠኝነት" id="declaration" required>የሰጠኩት መረጃ ትክክልና እውነተኛ መሆኑን እረጋግጣለሁ።</label>
+        <label>ቀን:
+            <input type="text" name="የማስገባት_ቀን" placeholder="02/11/2017" pattern="\d{2}/\d{2}/\d{4}" required>
+        </label>
+        <label>ፊርማ:
+            <input type="text" name="ፊርማ" required>
+        </label>
+        </fieldset>
+
+
+
+<!-- Submit Button -->
+<button onclick="submitForms()" id="submitBtn">ማስገባት</button>
+
+
+  <script src="js/baptism.js"></script>
+</body>
+</html>

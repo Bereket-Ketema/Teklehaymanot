@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የልጆች መረጃ ቅፅ</title>
+  <link rel="stylesheet" href="css/child.css">
+</head>
+<body>
+  <a href="childor.html" ><button class="btn">Afaan Oromo</button></a>
+  <h2>የልጆች መረጃ ቅፅ</h2>
+
+  <label for="numChildren">ልጆች ብዛት:</label>
+  <input type="number" id="numChildren" min="1" max="10" placeholder="ልጆች ቁጥር ያስገቡ">
+
+  <div id="formContainer" class="form-container"></div>
+
+
+ <fieldset id="confirmationSection" style="display: none;">
+  <legend>5. እርግጠኝነት</legend>
+  <label><input type="checkbox" name="እርግጠኝነት" id="declaration" required>የሰጠኩት መረጃ ትክክልና እውነተኛ መሆኑን እረጋግጣለሁ።</label>
+  <label>ቀን:
+    <input type="text" name="የማስገባት_ቀን" placeholder="02/11/2017" pattern="\d{2}/\d{2}/\d{4}" required>
+  </label>
+  <label>ፊርማ:
+    <input type="text" name="ፊርማ" required>
+  </label>
+</fieldset>
+
+<!-- Submit Button -->
+<button onclick="submitForms()" id="submitBtn" style="display: none;">ማስገባት</button>
+
+
+  <script src="js/child.js"></script>
+</body>
+</html>

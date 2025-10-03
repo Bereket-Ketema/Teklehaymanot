@@ -79,7 +79,12 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
     if (message.includes('ተመዝግቧል') || message.includes('🎉')) {
       setTimeout(() => {
-        window.location.href = '/';
+        if ( children > 0) {
+           window.location.href = 'child.html';
+        }
+        else{
+          window.location.href = '/';
+        }
       }, 3000);
     }
 

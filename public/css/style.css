@@ -40,28 +40,34 @@ body {
 /* Navigation buttons - Vertical Top Left */
 .navigation-buttons {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 20px;
+  left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
   z-index: 1000;
 }
 
 .nav-btn {
-  background-color: #5c3fa3;
+  background: linear-gradient(90deg, #5c3fa3 60%, #7a5ecc 100%);
   color: #fff;
-  padding: 10px 20px;
+  padding: 7px 14px;
   text-decoration: none;
-  font-size: 15px;
-  border-radius: 8px;
-  transition: background 0.3s ease, transform 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  outline: none;
 }
 
-.nav-btn:hover {
-  background-color: #7a5ecc;
-  transform: translateX(5px);
+.nav-btn:hover, .nav-btn:focus {
+  background: linear-gradient(90deg, #7a5ecc 60%, #5c3fa3 100%);
+  color: #ffda66;
+  transform: translateX(3px) scale(1.04);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
 }
 
 /* Hero Section */
@@ -188,23 +194,28 @@ footer {
 
 /* Language Button */
 #language {
-  background-color: #007BFF;
+  background: linear-gradient(90deg, #007BFF 60%, #66aaff 100%);
   color: white;
-  padding: 12px 20px;
+  padding: 7px 14px;
   border: none;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   display: block;
-  width: 140px;
-  height: 50px;
+  width: 120px;
+  height: 38px;
   text-decoration: none;
-  margin-left: 1000px;
-  margin-top: -15px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: -10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  outline: none;
 }
 
-#language:hover {
-  background-color: #668fff;
+#language:hover, #language:focus {
+  background: linear-gradient(90deg, #66aaff 60%, #007BFF 100%);
   color: #1f1f2e;
 }
 
@@ -231,112 +242,89 @@ footer {
 }
 
 /* -------------------- Responsive for Phones -------------------- */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .container {
-    padding: 15px;
+    padding: 10px;
   }
-
   .main-header {
-    padding: 30px 15px;
+    padding: 22px 5px;
   }
-
   .main-header h1 {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
   }
-
   .main-header p {
-    font-size: 1rem;
-  }
-
-  .navigation-buttons {
-    top: 15px;
-    left: 15px;
-  }
-
-  .nav-btn {
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-  .hero {
-    height: 250px;
-  }
-
-  .overlay {
-    bottom: 20px;
-    left: 20px;
-    padding: 20px 25px;
-    max-width: 90%;
-  }
-
-  .overlay h2 {
-    font-size: 1.4rem;
-  }
-
-  .overlay p {
-    font-size: 1rem;
-  }
-
-  .history-section {
-    padding: 40px 15px;
-  }
-
-  .history-section h2 {
-    font-size: 1.5rem;
-  }
-
-  .history-section p {
     font-size: 0.95rem;
-    padding: 12px;
   }
-
+  .navigation-buttons {
+    top: 10px;
+    left: 10px;
+    gap: 5px;
+  }
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .hero {
+    height: 180px;
+  }
+  .overlay {
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 12px;
+    max-width: 95%;
+  }
+  .overlay h2 {
+    font-size: 1.05rem;
+  }
+  .overlay p {
+    font-size: 0.92rem;
+  }
+  .history-section {
+    padding: 18px 5px;
+  }
+  .history-section h2 {
+    font-size: 1.05rem;
+  }
+  .history-section p {
+    font-size: 0.89rem;
+    padding: 7px;
+  }
   #btn {
     width: 100%;
-    font-size: 1rem;
-  }
-
-  .contact-section {
-    padding: 40px 15px;
-  }
-
-  .contact-section h2 {
-    font-size: 1.5rem;
-  }
-
-  .contact-section h3 {
-    font-size: 1.2rem;
-  }
-
-  .contact-section p {
     font-size: 0.95rem;
   }
-
+  .contact-section {
+    padding: 18px 5px;
+  }
+  .contact-section h2 {
+    font-size: 1.05rem;
+  }
+  .contact-section h3 {
+    font-size: 0.95rem;
+  }
+  .contact-section p {
+    font-size: 0.89rem;
+  }
   footer {
-    font-size: 13px;
-    padding: 15px;
+    font-size: 12px;
+    padding: 8px;
   }
-
-  /* ✅ Reposition language button to right */
   #language {
-    margin: 10px 15px 0 auto;
-    display: block;
-    width: 120px;
-    height: 45px;
-    font-size: 15px;
+    margin: 7px 7px 0 auto;
+    width: 90px;
+    height: 32px;
+    font-size: 12px;
     text-align: center;
   }
-
   .social-icons {
-    margin: 10px auto 0;
+    margin: 7px auto 0;
     text-align: center;
   }
-
   .social-icons a {
-    margin: 8px;
+    margin: 5px;
   }
-
   .social-icons img {
-    width: 35px;
-    height: 35px;
+    width: 26px;
+    height: 26px;
   }
 }

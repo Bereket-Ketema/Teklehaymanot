@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <title>የተመዘገቡ ክርስቲያኖች</title>
+  <link rel="stylesheet" href="css/baptism.css">
+</head>
+<body>
+
+  <header>
+    <h1>👥 የተመዘገቡ ክርስቲያኖች</h1>
+    <button onclick="logout()">🚪 ውጣ</button>
+  </header>
+
+  <div class="container">
+    <h2>መረጃ ዝርዝር</h2>
+
+    <table id="membersTable">
+      <thead>
+        <tr>
+          <th>ስም</th>
+          <th>የአባት ስም</th>
+          <th>የእናት ስም</th>
+          <th>የአያት ስም</th>
+          <th>የክርስትና ስም</th>
+          <th>የክርስትና አባት ስም</th>
+          <th>ፆታ</th>
+          <th>የትውልድ ቀን</th>
+          <th>ክርስትና የተነሳበት ቀን</th>
+          <th>የማስገባት ቀን</th>
+          <th>ፊርማ</th>
+          <th>አስወግድ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="10" class="no-data">⏳ መረጃ በመመጣት ላይ...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+        if (sessionStorage.getItem("isAdminLoggedIn") !== "true") {
+          window.location.href = "../admin.html";
+        }
+      }
+    });
+
+    function loadMembers() {
+      fetch('/getbaptism')
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.querySelector('#membersTable tbody');
+          tbody.innerHTML = '';
+
+          if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="10" class="no-data">🚫 መረጃ አልተገኘም።</td></tr>';
+            return;
+          }
+
+          data.forEach(member => {
+            const row = `
+              <tr>
+                <td>${member['ስም'] || ''}</td>
+                <td>${member['የአባት_ስም'] || ''}</td>
+                <td>${member['የእናት_ስም'] || ''}</td>
+                <td>${member['የአያት_ስም'] || ''}</td>
+                <td>${member['የክርስትና_ስም'] || ''}</td>
+                <td>${member['የክርስትና_አባት_ስም'] || ''}</td>
+                <td>${member['ፆታ'] || ''}</td>
+                <td>${member['የትውልድ_ቀን'] || ''}</td>
+                <td>${member['ክርስትና_የተነሳበት_ቀን'] || ''}</td>
+                <td>${member['የማስገባት_ቀን'] || ''}</td>
+                <td>${member['ፊርማ'] || ''}</td>
+                <td><button onclick="deletePerson(${member.id})">🗑️</button></td>
+              </tr>
+            `;
+            tbody.innerHTML += row;
+          });
+        })
+        .catch(err => {
+          console.error("🚨 Fetch error:", err);
+          alert("❌ መረጃ ማስመጣት አልተሳካም።");
+        });
+    }
+
+    function logout() {
+      // 🔐 You can clear session/localStorage if using authentication
+      alert("🚪 በተሳካ ሁኔታ ወጥተዋል።");
+      window.location.href = "/admin.html"; // redirect to login
+    }
+
+    function deletePerson(id) {
+      if (confirm("እርግጠኛ ነህ እንደምታስወግድ?")) {
+        fetch(`/api/baptist/${id}`, { method: 'DELETE' })
+          .then(() => location.reload());
+      }
+    }
+
+    window.onload = loadMembers;
+  </script>
+
+</body>
+</html>

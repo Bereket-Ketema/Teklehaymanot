@@ -13,7 +13,7 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>የተመዘገቡ ምዕመናን</h1>
+      <h1>የካዱ ምዕመናን</h1>
       <a href="#count-box"><button id="length">የምዕመናን ብዛት</button></a>
       <a href="/logout" class="logout-btn">🚪 ውጣ</a>
     </div>
@@ -72,14 +72,14 @@
       margin-top: 10px;
     }
   </style>
-  <h1>የተመዘገቡ ምዕመናን ብዛት</h1>
+  <h1>የካዱ ምዕመናን ብዛት</h1>
   <div class="count-box" id="count-box">
     <div>ድምር ብዛት:</div>
     <div class="number" id="totalCount">Loading...</div>
   </div>
 
   <script>
-    fetch('/api/people/count')
+    fetch('/api/betray/count')
       .then(res => res.json())
       .then(data => {
         document.getElementById('totalCount').innerText = data.total;
@@ -91,6 +91,6 @@
   </script>
 
 
-  <script src="js/fetch.js"></script>
+  <script src="js/betray.js"></script>
 </body>
 </html>

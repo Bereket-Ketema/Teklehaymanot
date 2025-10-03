@@ -1,0 +1,119 @@
+body {
+  font-family: 'Noto Sans Ethiopic', Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #2c3e50;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  background-color: #fff;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 8px;
+  color: #005baa;
+}
+
+.form-container {
+  margin-top: 20px;
+}
+
+.child-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.child-form h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #007acc;
+}
+
+#confirmationSection {
+  margin-top: 30px;
+  background-color: #e9f5ff;
+  border: 1px solid #b3d9ff;
+}
+
+#confirmationSection label {
+  font-weight: 500;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #005baa;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 20px auto;
+}
+
+button:hover {
+  background-color: #004080;
+}
+
+label input[type="checkbox"][name="እርግጠኝነት"] + * {
+  vertical-align: middle;
+}
+
+.btn{
+  margin-left: 1000px;
+  margin-top: 5px;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .child-form, fieldset {
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  input, select {
+    font-size: 15px;
+  }
+}

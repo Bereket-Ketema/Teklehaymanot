@@ -1,5 +1,5 @@
 document.getElementById('changeForm').addEventListener('submit', async function (e) {
-  e.preventDefault(); // Prevent form default submission
+  e.preventDefault();
 
   const formData = new FormData(this);
   const data = {
@@ -17,13 +17,13 @@ document.getElementById('changeForm').addEventListener('submit', async function 
     });
 
     const text = await res.text();
-    
-    // Show alert with message
     alert(text);
 
-    // Optional: reload page after successful change
+    // If success → redirect to login page
     if (text.includes('✅')) {
-      setTimeout(() => location.reload(), 1500);
+      setTimeout(() => {
+        window.location.href = '/admin.html'; // change path to your login page
+      }, 1500);
     }
 
   } catch (err) {

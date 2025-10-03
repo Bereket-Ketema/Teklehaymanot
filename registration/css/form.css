@@ -80,6 +80,12 @@ label input[type="checkbox"][name="እርግጠኝነት"] + * {
 }
 
 .btn{
-  margin-left: 1100px;
+  margin-left: 1000px;
   margin-top: 5px;
+}
+
+.brm{
+  margin-left: 20px;
+  margin-top: 5px;
+  text-align: left;
 }
