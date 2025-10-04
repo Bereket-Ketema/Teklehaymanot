@@ -20,3 +20,14 @@ function additions(){
       button.innerText = 'Dabalata Dubissuf';
     }
 }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuBtn = document.getElementById("mobileMenuToggle");
+    const sideButtons = document.querySelector(".navigation-buttons");
+
+    if (window.innerWidth <= 768) {
+      menuBtn.addEventListener("click", function () {
+        sideButtons.classList.toggle("show");
+      });
+    }
+  });
